@@ -31,5 +31,12 @@ pipeline{
                  sh 'mvn verify -DskipUnitTests'
             }
         }
+
+        stage('Code Quality Analysis'){
+            when { expression {  params.action == 'create' } }
+            steps{
+                 sh 'mvn clean package sonar:sonar'
+            }
+        }
     }
 }
