@@ -109,4 +109,13 @@ pipeline{
             }
         }      
     }
+
+    post {
+        failure {
+           emailext body: 'Pipeline Failed', subject: 'Pipeline Failed', to: 'yaswanthgopi345@gmail.com'
+        }
+        success {
+            emailext body: 'Pipeline Passed', subject: 'Pipeline Passed', to: 'yaswanthgopi345@gmail.com'
+        }
+    }
 }
